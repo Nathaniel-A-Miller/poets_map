@@ -137,6 +137,7 @@
   .card.on-map {
     position: absolute;
     z-index: 5;
+    transform-origin: 0 0;
   }
   .card.on-map.expanded { z-index: 6; }
   .card.dragging {
@@ -318,6 +319,10 @@
   function applyTransform() {
     stage.style.transform = `translate(${view.tx}px, ${view.ty}px) scale(${view.scale})`;
     scaleReadout.textContent = Math.round(view.scale * 100) + '%';
+    const inv = 1 / view.scale;
+    document.querySelectorAll('.card.on-map').forEach(c => {
+      c.style.transform = `scale(${inv})`;
+    });
   }
   function persistView() {
     state.view = { scale: view.scale, tx: view.tx, ty: view.ty };
@@ -390,6 +395,7 @@
     card.style.top = y + 'px';
     if (expanded) card.classList.add('expanded'); else card.classList.remove('expanded');
     stage.appendChild(card);
+    card.style.transform = `scale(${1 / view.scale})`;
     state.cards[id] = { onMap: true, x, y, expanded: !!expanded };
     saveState();
   }
@@ -403,6 +409,7 @@
     card.style.width = '';
     card.style.left = '';
     card.style.top = '';
+    card.style.transform = '';
     tray.appendChild(card);
     state.cards[id] = { onMap: false };
     saveState();

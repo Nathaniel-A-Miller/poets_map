@@ -11,18 +11,8 @@
     --ink: #1a202c;
     --muted: #4a5568;
     --bg: #f0f2f5;
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-      padding: 10px 12px;
-      cursor: grab;
-      user-select: none;
-      width: 230px;
-      font-size: 14px;
-  };
     --border: #e1e8ed;
+    --card: rgba(255, 255, 255, 0.85);
   }
   * { box-sizing: border-box; }
   html, body {
@@ -134,7 +124,7 @@
   }
 
   .card {
-    background: var();
+    background: var(--card);
     border: 1px solid var(--border);
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);

@@ -11,7 +11,11 @@
     --ink: #1a202c;
     --muted: #4a5568;
     --bg: #f0f2f5;
-    --card: #ffffff;
+    .card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);  /* Safari */
+  };
     --border: #e1e8ed;
   }
   * { box-sizing: border-box; }
@@ -124,7 +128,7 @@
   }
 
   .card {
-    background: var(--card);
+    background: var();
     border: 1px solid var(--border);
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
